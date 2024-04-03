@@ -19,35 +19,35 @@ import java.util.List;
 public class PatientController {
     private PatientRepository patientRepository;
     @GetMapping("/index")
-    //@RequestParam(name="page") récupèrer un paramètre qui s'appelle page est affecter au param page au dessous
     public String index(Model model,
                         @RequestParam(name = "page",defaultValue ="0" ) int page,
                         @RequestParam(name = "size",defaultValue = "4") int size,
                         @RequestParam(name = "keyword",defaultValue = "") String kw
                         ){
-        /* HttpServletRequest request*/
-        /*int page=Integer.parseInt(request.getParameter("page"));
-        int size=Integer.parseInt(request.getParameter("size"));*/
 
-      /* List<Patient> patientList=patientRepository.findAll();
-       model.addAttribute("listPatient",patientList);*/
-
-        //Page<Patient> pagePatients=patientRepository.findAll(PageRequest.of(page,size));
         Page<Patient> pagePatients=patientRepository.findByNomContains(kw,PageRequest.of(page,size));
-
 
         model.addAttribute("listPatients",pagePatients.getContent());;
         //return le nombre total des pages
         model.addAttribute("pages",new int[pagePatients.getTotalPages()]);
         model.addAttribute("currentPage",page);
         model.addAttribute("keyword",kw);
-
         return "patients";
-
     }
     @GetMapping("/delete")
     public String delete(Long id,String keyword,int page){
         patientRepository.deleteById(id);
         return "redirect:/index?page="+page+ "&keyword="+keyword;
     }
+
+
 }
+//@RequestParam(name="page") récupèrer un paramètre qui s'appelle page est affecter au param page au dessous
+/* HttpServletRequest request*/
+        /*int page=Integer.parseInt(request.getParameter("page"));
+        int size=Integer.parseInt(request.getParameter("size"));*/
+
+      /* List<Patient> patientList=patientRepository.findAll();
+       model.addAttribute("listPatient",patientList);*/
+
+//Page<Patient> pagePatients=patientRepository.findAll(PageRequest.of(page,size));

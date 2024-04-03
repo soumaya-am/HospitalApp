@@ -17,7 +17,6 @@ public class SpringMvcThylemeafHospitalApplication implements CommandLineRunner 
 
         SpringApplication.run(SpringMvcThylemeafHospitalApplication.class, args);
     }
-
     @Override
     public void run(String... args) throws Exception {
         /*//en utilisant constructeur sans paramètre
@@ -27,9 +26,8 @@ public class SpringMvcThylemeafHospitalApplication implements CommandLineRunner 
         patient.setDateNaissance(new Date());
         patient.setMalade(false);
         patient.setScore(23);
-
         //Constructeur avec paramètre
-        Patient patient1=new Patient(null,"hicham",new Date(),false,123);
+        Patient patient1=new Patient(null,"soumaya",new Date(),false,123);
         //en utilisant Builder
         Patient patient2=Patient.builder()
                 .nom("imane")
@@ -37,8 +35,6 @@ public class SpringMvcThylemeafHospitalApplication implements CommandLineRunner 
                 .score(65)
                 .malade(true)
                 .build();*/
-
-
         patientRepository.save(new Patient(null,"Mohammed",new Date(),false,25));
         patientRepository.save(new Patient(null,"ilyas",new Date(),true,2));
         patientRepository.save(new Patient(null,"oumama",new Date(),false,12));
