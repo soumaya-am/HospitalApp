@@ -1,4 +1,4 @@
-<h1> <br>Compte Rendu </h1>
+<h1> Compte Rendu </h1>
 <h2 class="text-danger">Activité Pratique N°3 - Spring MVC</h2>
 <hr>
 <h3>Objectif de l'application :</h3>
